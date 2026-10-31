@@ -1,0 +1,13 @@
+# Virtual Environment
+capstone_env/
+
+# Python Cache & Bytecode
+__pycache__/
+*.pyc
+
+# Environment & Backup Files
+.env
+*.bak
+
+# VS Code
+.vscode/

@@ -1,0 +1,26 @@
+======================================================================
+PART 2 TASK 7 FOUNDATION: RAG TOOL VERIFICATION REPORT
+======================================================================
+Active Collection : sentence_chunks
+Similarity Cutoff : 0.38
+----------------------------------------------------------------------
+[TEST 1: IN-SCOPE QUERY]
+Query            : What is the notice period required upon employee resignation?
+Top-1 Similarity : 0.7422 (>= 0.38)
+Is Grounded      : True
+Sources          : ['kb_005']
+Answer           : According to Naukri.com policy (kb_005): Confirmed full-time employees are subject to a mandatory notice period of sixty days upon submitting formal resignation via the internal HR portal. During the probationary period, the notice duration is reduced to thirty days for either party. The organization reserves the discretion to approve notice buyout or early relief requests based on project deliverables, business continuity, and explicit managerial consent.
+
+[TEST 2: OUT-OF-SCOPE QUERY]
+Query            : What is the best recipe for baking sourdough bread at home?
+Top-1 Similarity : 0.1727 (< 0.38)
+Is Grounded      : False
+Answer           : I don't know based on the available policy documents. The query falls outside the scope of current Naukri.com HR and hiring policies.
+
+[TEST 3: CREWAI @TOOL INVOCATION]
+Tool Name        : rag_lookup
+Tool Args Schema : {'properties': {'query': {'title': 'Query', 'type': 'string'}}, 'required': ['query'], 'title': 'Rag_Lookup', 'type': 'object'}
+Execution Result : According to Naukri.com policy (kb_006): Successful referrals for technical and managerial roles carry an incentive bonus of fifty thousand rupees, disbursed in two equal installments at three months and six months of the referee's active tenure. Referrals must be registered prior to the candidate's initial application submission, and members of the Talent Acquisition team and hiring managers are ineligible for bonus payouts for roles within their reporting hierarchy. Existing employees are encouraged to refer qualified talent through the internal employee referral module on Naukri.com.
+======================================================================
+RAG TOOL VERIFIED AND READY FOR CREWAI RETRIEVAL AGENT
+======================================================================

@@ -1,0 +1,49 @@
+======================================================================
+PART 1 TASK 3: DUAL CHROMADB INDEXING VERIFICATION REPORT
+======================================================================
+Embedding Model: all-MiniLM-L6-v2
+ChromaDB Path  : F:\IITR Agentic AI\IITR-Module5\naukri-support-agent\Part1_Dataset_RAG\chroma_db
+Distance Metric: Cosine (hnsw:space = cosine)
+----------------------------------------------------------------------
+COLLECTION 1: 'fixed_size_chunks'
+  - Strategy          : Fixed-Size with Overlap (size=200, overlap=50)
+  - Total Indexed     : 49 chunks
+  - Upsert Operation  : collection.upsert() verified
+----------------------------------------------------------------------
+COLLECTION 2: 'sentence_chunks'
+  - Strategy          : Sentence-Based Chunking
+  - Total Indexed     : 39 chunks
+  - Upsert Operation  : collection.upsert() verified
+======================================================================
+PROBE QUERY RETRIEVAL VERIFICATION:
+Query: "What is the notice period required upon employee resignation?"
+----------------------------------------------------------------------
+Collection 1 ('fixed_size_chunks') Top-2 Hits:
+  - Chunk ID  : kb_005_fixed_01
+    Doc ID    : kb_005
+    Topic     : notice-period policy
+    Similarity: 0.7599
+    Excerpt   : Confirmed full-time employees are subject to a mandatory notice period of sixty days upon submitting formal resignation via the internal HR portal. During the probationary period, the notice duration
+
+  - Chunk ID  : kb_005_fixed_02
+    Doc ID    : kb_005
+    Topic     : notice-period policy
+    Similarity: 0.5326
+    Excerpt   : ring the probationary period, the notice duration is reduced to thirty days for either party. The organization reserves the discretion to approve notice buyout or early relief requests based on projec
+
+Collection 2 ('sentence_chunks') Top-2 Hits:
+  - Chunk ID  : kb_005_sent_01
+    Doc ID    : kb_005
+    Topic     : notice-period policy
+    Similarity: 0.7422
+    Excerpt   : Confirmed full-time employees are subject to a mandatory notice period of sixty days upon submitting formal resignation via the internal HR portal.
+
+  - Chunk ID  : kb_005_sent_02
+    Doc ID    : kb_005
+    Topic     : notice-period policy
+    Similarity: 0.4673
+    Excerpt   : During the probationary period, the notice duration is reduced to thirty days for either party.
+
+======================================================================
+ACCEPTANCE STATUS: BOTH COLLECTIONS PRODUCING SENSIBLE RETRIEVAL
+======================================================================

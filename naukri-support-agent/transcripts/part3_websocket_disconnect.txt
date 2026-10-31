@@ -1,0 +1,80 @@
+======================================================================
+PART 3 TASK 11: WEBSOCKET MULTI-TURN CHAT & DISCONNECT VERIFICATION
+======================================================================
+Execution Mode: MOCK_LLM (Offline, Zero API Keys, Zero Outbound Calls)
+Timestamp     : 2026-10-31T18:29:37.126298+00:00
+Endpoint      : WS /ws/chat
+----------------------------------------------------------------------
+
+[STEP 1: CLIENT 1 CONNECTS & MULTI-TURN CHAT]
+Client 1 Session ID: ws_session_candidate_101
+Client 1 Turn 1 Send: {"query": "What is the notice period policy at Naukri?", "session_id": "ws_session_candidate_101"}
+Server Response 1  :
+{
+  "query": "What is the notice period policy at Naukri?",
+  "answer": "Based on verified Naukri.com records and policies:\nAccording to Naukri.com policy (kb_002, kb_005): Confirmed full-time employees are subject to a mandatory notice period of sixty days upon submitting formal resignation via the internal HR portal. The organization reserves the discretion to approve notice buyout or early relief requests based on project deliverables, business continuity, and explicit managerial consent. Technical and managerial interview rounds must be scheduled at least forty-eight hours in advance through the designated Naukri.com hiring portal calendar.",
+  "source_documents": [
+    "kb_002",
+    "kb_005"
+  ],
+  "confidence_score": 0.4935,
+  "is_grounded": true,
+  "escalation_score": null,
+  "session_id": "ws_session_candidate_101",
+  "trace_id": "7f3bad11-7631-488f-a3e8-4e594d543a47",
+  "response_time_ms": 653.15
+}
+Turn 1 Latency     : 654.98 ms
+
+Client 1 Turn 2 Send: {"query": "Does the same apply to employees under probation?", "session_id": "ws_session_candidate_101"}
+Server Response 2  :
+{
+  "query": "Does the same apply to employees under probation?",
+  "answer": "Based on verified Naukri.com records and policies:\nAccording to Naukri.com policy (kb_005, kb_008): During the probationary period, the notice duration is reduced to thirty days for either party. Confirmed full-time employees are subject to a mandatory notice period of sixty days upon submitting formal resignation via the internal HR portal. Under exceptional circumstances where performance expectations are partially met, probation may be extended once for a maximum duration of ninety days with defined corrective objectives.",
+  "source_documents": [
+    "kb_005",
+    "kb_008"
+  ],
+  "confidence_score": 0.576,
+  "is_grounded": true,
+  "escalation_score": null,
+  "session_id": "ws_session_candidate_101",
+  "trace_id": "f53cc5c7-7e46-4f2b-a363-8abe533cb9d5",
+  "response_time_ms": 300.65
+}
+Turn 2 Latency     : 303.32 ms
+Conversational Memory Context Carried: True (Turn 2 answered in context of Turn 1)
+
+[STEP 2: CLIENT 1 ABRUPT DISCONNECT]
+Action        : Client 1 terminated socket connection abruptly (close_code=1001 / Going Away)
+Server Action : WebSocket handler caught WebSocketDisconnect exception cleanly
+Server State  : Process remained alive; no unhandled exception raised; zero crash
+
+[STEP 3: CLIENT 2 CONNECTS — SERVER SURVIVAL & HEALTH VERIFICATION]
+Client 2 Session ID: ws_session_candidate_202
+Client 2 Send      : {"query": "What is the status of application APP-005?", "session_id": "ws_session_candidate_202"}
+Server Response    :
+{
+  "query": "What is the status of application APP-005?",
+  "answer": "Based on verified Naukri.com records and policies:\nApplication APP-005 is currently in 'Offered' status with expected salary INR 330,000. Escalation score: 0.0800 (Manager escalation recommended: False).",
+  "source_documents": [
+    "dataset.py:APP-005"
+  ],
+  "confidence_score": 1.0,
+  "is_grounded": true,
+  "escalation_score": 0.08,
+  "session_id": "ws_session_candidate_202",
+  "trace_id": "b4189b35-8350-464c-91ba-52938dea0fd8",
+  "response_time_ms": 195.03
+}
+Client 2 Latency   : 196.53 ms
+
+----------------------------------------------------------------------
+[STEP 4: OBSERVABILITY & SERVER HEALTH ASSERTIONS]
+- Server caught WebSocketDisconnect without termination : PASSED
+- Subsequent client requests processed normally        : PASSED
+- Memory isolation between Client 1 and Client 2        : PASSED
+- Real-time structured WebSocket events logged           : PASSED
+======================================================================
+TASK 11 WEBSOCKET DISCONNECT ACCEPTANCE CRITERIA: FULLY SATISFIED
+======================================================================

@@ -1,0 +1,11 @@
+PART 2 TASK 7: CREWAI APPLICATION LOOKUP DEMONSTRATION
+- Query: Check status and escalation metrics for application APP-045
+- Active Agents: Application Records Specialist -> Senior HR Support Composer
+- Tool Invoked: check_job_application_status (JOB_APPLICATIONS dataset)
+- Escalation Score: 0.96
+- Escalation Threshold: 0.65
+- Source Documents: ['dataset.py:APP-045']
+- Final Synthesized Answer:
+Based on verified Naukri.com records and policies:
+Application APP-045 is currently in 'Screening' status with expected salary INR 3,110,000. Escalation score: 0.9600 (Manager escalation recommended: True).
+- Pydantic Validation: PASSED

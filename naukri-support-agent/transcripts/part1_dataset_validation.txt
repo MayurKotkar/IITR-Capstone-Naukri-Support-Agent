@@ -1,0 +1,36 @@
+======================================================================
+PART 1 TASK 1: JOB APPLICATIONS DATASET VALIDATION REPORT
+======================================================================
+Track: Naukri.com (Recruitment & HR)
+Deterministic Seed: 42
+Total Records: 50 (Requirement: >= 40)
+Salary Range: INR 300,000 to INR 3,500,000
+Salary Reasoning: The expected salary range of INR 300,000 to INR 3,500,000 realistically covers junior roles (Sales Associate, HR Executive) up to senior roles (Senior Software Engineer, Product Manager) in the Indian recruitment ecosystem.
+----------------------------------------------------------------------
+CATEGORY DISTRIBUTION (Requirement: every category >= 3 records):
+  - Software Engineer        : 14 records [Pass]
+  - Data Analyst             :  8 records [Pass]
+  - Product Manager          :  9 records [Pass]
+  - HR Executive             :  7 records [Pass]
+  - Sales Associate          : 12 records [Pass]
+----------------------------------------------------------------------
+STATUS DISTRIBUTION (Requirement: every status >= 1 record):
+  - Applied                  : 22 records [Pass]
+  - Screening                : 12 records [Pass]
+  - Interview Scheduled      :  6 records [Pass]
+  - Offered                  :  5 records [Pass]
+  - Rejected                 :  5 records [Pass]
+----------------------------------------------------------------------
+PRIORITY REVIEW RATE (Requirement: 10% to 30%):
+  - Flagged True count   : 7 / 50
+  - Flagged percentage   : 14.00% [Pass: between 10% and 30%]
+----------------------------------------------------------------------
+SAMPLE RECORDS (First 5):
+  [APP-001] Product Manager    | Status: Applied              | Salary: INR 1,700,000 | Days:  7 | Priority: False
+  [APP-002] Product Manager    | Status: Interview Scheduled  | Salary: INR 3,090,000 | Days:  2 | Priority: False
+  [APP-003] Software Engineer  | Status: Applied              | Salary: INR 1,490,000 | Days: 16 | Priority: False
+  [APP-004] Product Manager    | Status: Interview Scheduled  | Salary: INR 3,090,000 | Days: 13 | Priority: False
+  [APP-005] Product Manager    | Status: Offered              | Salary: INR   330,000 | Days: 24 | Priority: False
+======================================================================
+OVERALL VALIDATION STATUS: ALL ACCEPTANCE CRITERIA SATISFIED
+======================================================================

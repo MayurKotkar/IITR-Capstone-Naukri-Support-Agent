@@ -1,0 +1,33 @@
+======================================================================
+PART 2 TASK 6: APPLICATION LOOKUP & ESCALATION SCORING REPORT
+======================================================================
+FORMULA SPECIFICATION:
+escalation_score = w_priority * flagged_priority_review + w_recency * (1 - days_since_created / 30)
+Where w_priority = 0.6, w_recency = 0.4.
+Escalation is recommended when escalation_score >= 0.65.
+----------------------------------------------------------------------
+DATASET DISTRIBUTION & THRESHOLD JUSTIFICATION:
+  - Total Application Records   : 50
+  - Minimum Escalation Score    : 0.0133
+  - 50th Percentile (Median)    : 0.2400
+  - 80th Percentile Score       : 0.3733
+  - Maximum Escalation Score    : 0.9600
+  - Configured Threshold        : 0.65
+  - Applications Escalated      : 7 / 50 (14.0%)
+
+  Justification Reasoning:
+  Non-flagged applications receive maximum score of 0.4000 (even at 0 days).
+  Flagged applications receive base 0.6000 + recency signal (up to 0.4000).
+  Setting the threshold at 0.65 ensures that only applications
+  that are BOTH flagged for priority review AND sufficiently recent (days <= 26)
+  qualify for immediate managerial escalation, corresponding to the top 14.0%
+  of all applicant cases in our deterministic dataset.
+----------------------------------------------------------------------
+SAMPLE APPLICATION LOOKUP EXECUTIONS:
+  [APP-001] Category: Product Manager    | Status: Applied              | Salary: INR 1,700,000 | Score: 0.3067 | Escalate: False
+  [APP-002] Category: Product Manager    | Status: Interview Scheduled  | Salary: INR 3,090,000 | Score: 0.3733 | Escalate: False
+  [APP-045] Category: Sales Associate    | Status: Screening            | Salary: INR 3,110,000 | Score: 0.9600 | Escalate: True
+  [APP-999] Status: Not Found | Error: Application record 'APP-999' does not exist in the Naukri.com database.
+======================================================================
+TASK 6 STATUS: ACCEPTANCE CRITERIA FULLY SATISFIED
+======================================================================

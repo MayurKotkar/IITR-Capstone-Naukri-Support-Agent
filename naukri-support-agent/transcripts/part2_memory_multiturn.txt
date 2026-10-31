@@ -1,0 +1,27 @@
+PART 2 TASK 8: MULTI-TURN CONVERSATION SESSION MEMORY TRANSCRIPT
+Framework: LangChain InMemoryChatMessageHistory + CrewAI Sequential Agents
+Session ID: session_001
+Design: Native Agentic Context Understanding (Zero Python Pattern Hacks)
+======================================================================
+
+[TURN 1]
+User Query : What is the notice period policy?
+Sources    : ['kb_005']
+Confidence : 0.5673
+Agent Response:
+Based on verified Naukri.com records and policies:
+According to Naukri.com policy (kb_005): Confirmed full-time employees are subject to a mandatory notice period of sixty days upon submitting formal resignation via the internal HR portal. The organization reserves the discretion to approve notice buyout or early relief requests based on project deliverables, business continuity, and explicit managerial consent. During the probationary period, the notice duration is reduced to thirty days for either party.
+
+----------------------------------------------------------------------
+
+[TURN 2 - ANAPHORIC FOLLOW-UP]
+User Query         : Does the same apply to employees under probation?
+Agent Reasoning    : LLM inspected message history in prompt and retrieved notice period & probation clauses
+Sources Retrieved  : ['kb_005', 'kb_008']
+Confidence         : 0.576
+Agent Response:
+Based on verified Naukri.com records and policies:
+According to Naukri.com policy (kb_005, kb_008): During the probationary period, the notice duration is reduced to thirty days for either party. Confirmed full-time employees are subject to a mandatory notice period of sixty days upon submitting formal resignation via the internal HR portal. Under exceptional circumstances where performance expectations are partially met, probation may be extended once for a maximum duration of ninety days with defined corrective objectives.
+
+======================================================================
+RESULT: PASSED (Context preserved across turns via InMemoryChatMessageHistory and Agent Reasoning)

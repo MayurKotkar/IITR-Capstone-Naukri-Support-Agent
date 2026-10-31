@@ -1,0 +1,152 @@
+======================================================================
+PART 1 TASK 4: GROUNDED GENERATION DEMONSTRATION TRANSCRIPT
+======================================================================
+Calibrated Threshold: 0.38
+Embedding Model     : all-MiniLM-L6-v2
+Total Test Queries  : 6 (5 in-scope + 1 out-of-scope fallback)
+======================================================================
+
+--- [Q1] IN_SCOPE: "What are the eligibility criteria for job application submissions?" ---
+Expected Target Document: kb_001
+
+[Collection 1: fixed_size_chunks]
+  - Top-1 Cosine Sim : 0.5145 (Threshold: 0.38)
+  - Fallback Status  : PASSED (Grounded Answer)
+  - Grounded in Docs : ['kb_001', 'kb_004']
+  - Generated Answer : According to Naukri.com policy (kb_001, kb_004): ncompasses highest educational credential authentication, previous employment records for the past five years, criminal history clearance, and identity validation. Candidates are required to furnish s ions aligned with the job specification. All applicants are required to possess valid Indian work authorization or appropriate legal clearance prior to submitting their application profile. A cooling- Candidates applying for open roles via the Naukri.com employer portal must hold an accredited undergraduate degree or relevant professional certifications aligned with the job specification. All appli
+  - Retrieved Chunks :
+      1. [kb_004_fixed_02] sim=0.5145: ncompasses highest educational credential authentication, previous employment records for the past f...
+      2. [kb_001_fixed_02] sim=0.5142: ions aligned with the job specification. All applicants are required to possess valid Indian work au...
+      3. [kb_001_fixed_01] sim=0.5030: Candidates applying for open roles via the Naukri.com employer portal must hold an accredited underg...
+
+[Collection 2: sentence_chunks]
+  - Top-1 Cosine Sim : 0.5613 (Threshold: 0.38)
+  - Fallback Status  : PASSED (Grounded Answer)
+  - Grounded in Docs : ['kb_001', 'kb_004', 'kb_010']
+  - Generated Answer : According to Naukri.com policy (kb_001, kb_004, kb_010): All applicants are required to possess valid Indian work authorization or appropriate legal clearance prior to submitting their application profile. Every shortlisted candidate slate for open positions must feature qualified applicants from underrepresented groups wherever feasible. Candidates are required to furnish self-attested documentation and authorized references within seven business days of accepting their offer letter.
+  - Retrieved Chunks :
+      1. [kb_001_sent_02] sim=0.5613: All applicants are required to possess valid Indian work authorization or appropriate legal clearanc...
+      2. [kb_010_sent_02] sim=0.5459: Every shortlisted candidate slate for open positions must feature qualified applicants from underrep...
+      3. [kb_004_sent_03] sim=0.4962: Candidates are required to furnish self-attested documentation and authorized references within seve...
+
+--- [Q2] IN_SCOPE: "How does the interview scheduling process work?" ---
+Expected Target Document: kb_002
+
+[Collection 1: fixed_size_chunks]
+  - Top-1 Cosine Sim : 0.5783 (Threshold: 0.38)
+  - Fallback Status  : PASSED (Grounded Answer)
+  - Grounded in Docs : ['kb_002']
+  - Generated Answer : According to Naukri.com policy (kb_002): Shortlisted candidates receive an automated scheduling invitation via their registered email address within three business days of passing the initial profile screening. Technical and managerial inter profile screening. Technical and managerial interview rounds must be scheduled at least forty-eight hours in advance through the designated Naukri.com hiring portal calendar. Candidates may request a m hiring portal calendar. Candidates may request a one-time rescheduling with at least twenty-four hours of prior written notice without impacting their application standing.
+  - Retrieved Chunks :
+      1. [kb_002_fixed_01] sim=0.5783: Shortlisted candidates receive an automated scheduling invitation via their registered email address...
+      2. [kb_002_fixed_02] sim=0.5632: profile screening. Technical and managerial interview rounds must be scheduled at least forty-eight ...
+      3. [kb_002_fixed_03] sim=0.4882: m hiring portal calendar. Candidates may request a one-time rescheduling with at least twenty-four h...
+
+[Collection 2: sentence_chunks]
+  - Top-1 Cosine Sim : 0.5805 (Threshold: 0.38)
+  - Fallback Status  : PASSED (Grounded Answer)
+  - Grounded in Docs : ['kb_001', 'kb_002']
+  - Generated Answer : According to Naukri.com policy (kb_001, kb_002): Technical and managerial interview rounds must be scheduled at least forty-eight hours in advance through the designated Naukri.com hiring portal calendar. Shortlisted candidates receive an automated scheduling invitation via their registered email address within three business days of passing the initial profile screening. A cooling-off period of six months applies to candidates who have previously been rejected following the final technical interview stage before re-applying for the same role.
+  - Retrieved Chunks :
+      1. [kb_002_sent_02] sim=0.5805: Technical and managerial interview rounds must be scheduled at least forty-eight hours in advance th...
+      2. [kb_002_sent_01] sim=0.5381: Shortlisted candidates receive an automated scheduling invitation via their registered email address...
+      3. [kb_001_sent_03] sim=0.4187: A cooling-off period of six months applies to candidates who have previously been rejected following...
+
+--- [Q3] IN_SCOPE: "What is the background verification procedure for prospective hires?" ---
+Expected Target Document: kb_004
+
+[Collection 1: fixed_size_chunks]
+  - Top-1 Cosine Sim : 0.6869 (Threshold: 0.38)
+  - Fallback Status  : PASSED (Grounded Answer)
+  - Grounded in Docs : ['kb_004', 'kb_012']
+  - Generated Answer : According to Naukri.com policy (kb_004, kb_012): All prospective hires must successfully undergo comprehensive background verification before their formal date of onboarding. The verification scope encompasses highest educational credential authenti y validation. Candidates are required to furnish self-attested documentation and authorized references within seven business days of accepting their offer letter. Any discrepancies or material misrepr Resume profiles, interview assessment records, and application materials submitted via the Naukri.com employer pipeline are securely retained in the talent repository for twenty-four months from the d
+  - Retrieved Chunks :
+      1. [kb_004_fixed_01] sim=0.6869: All prospective hires must successfully undergo comprehensive background verification before their f...
+      2. [kb_004_fixed_03] sim=0.4557: y validation. Candidates are required to furnish self-attested documentation and authorized referenc...
+      3. [kb_012_fixed_01] sim=0.4351: Resume profiles, interview assessment records, and application materials submitted via the Naukri.co...
+
+[Collection 2: sentence_chunks]
+  - Top-1 Cosine Sim : 0.6848 (Threshold: 0.38)
+  - Fallback Status  : PASSED (Grounded Answer)
+  - Grounded in Docs : ['kb_004']
+  - Generated Answer : According to Naukri.com policy (kb_004): All prospective hires must successfully undergo comprehensive background verification before their formal date of onboarding. The verification scope encompasses highest educational credential authentication, previous employment records for the past five years, criminal history clearance, and identity validation. Candidates are required to furnish self-attested documentation and authorized references within seven business days of accepting their offer letter.
+  - Retrieved Chunks :
+      1. [kb_004_sent_01] sim=0.6848: All prospective hires must successfully undergo comprehensive background verification before their f...
+      2. [kb_004_sent_02] sim=0.4939: The verification scope encompasses highest educational credential authentication, previous employmen...
+      3. [kb_004_sent_03] sim=0.4083: Candidates are required to furnish self-attested documentation and authorized references within seve...
+
+--- [Q4] IN_SCOPE: "What is the notice period required upon employee resignation?" ---
+Expected Target Document: kb_005
+
+[Collection 1: fixed_size_chunks]
+  - Top-1 Cosine Sim : 0.7599 (Threshold: 0.38)
+  - Fallback Status  : PASSED (Grounded Answer)
+  - Grounded in Docs : ['kb_005', 'kb_013']
+  - Generated Answer : According to Naukri.com policy (kb_005, kb_013): Confirmed full-time employees are subject to a mandatory notice period of sixty days upon submitting formal resignation via the internal HR portal. During the probationary period, the notice duration ring the probationary period, the notice duration is reduced to thirty days for either party. The organization reserves the discretion to approve notice buyout or early relief requests based on projec Topic: sabbatical-leave policy Content: Employees with at least five years of continuous service may apply for an unpaid sabbatical of up to twelve months. Sabbatical requests must be submitted at lea
+  - Retrieved Chunks :
+      1. [kb_005_fixed_01] sim=0.7599: Confirmed full-time employees are subject to a mandatory notice period of sixty days upon submitting...
+      2. [kb_005_fixed_02] sim=0.5326: ring the probationary period, the notice duration is reduced to thirty days for either party. The or...
+      3. [kb_013_fixed_01] sim=0.4182: Topic: sabbatical-leave policy Content: Employees with at least five years of continuous service may...
+
+[Collection 2: sentence_chunks]
+  - Top-1 Cosine Sim : 0.7422 (Threshold: 0.38)
+  - Fallback Status  : PASSED (Grounded Answer)
+  - Grounded in Docs : ['kb_005']
+  - Generated Answer : According to Naukri.com policy (kb_005): Confirmed full-time employees are subject to a mandatory notice period of sixty days upon submitting formal resignation via the internal HR portal. During the probationary period, the notice duration is reduced to thirty days for either party. The organization reserves the discretion to approve notice buyout or early relief requests based on project deliverables, business continuity, and explicit managerial consent.
+  - Retrieved Chunks :
+      1. [kb_005_sent_01] sim=0.7422: Confirmed full-time employees are subject to a mandatory notice period of sixty days upon submitting...
+      2. [kb_005_sent_02] sim=0.4673: During the probationary period, the notice duration is reduced to thirty days for either party....
+      3. [kb_005_sent_03] sim=0.4156: The organization reserves the discretion to approve notice buyout or early relief requests based on ...
+
+--- [Q5] IN_SCOPE: "How does the employee referral bonus payout work?" ---
+Expected Target Document: kb_006
+
+[Collection 1: fixed_size_chunks]
+  - Top-1 Cosine Sim : 0.5675 (Threshold: 0.38)
+  - Fallback Status  : PASSED (Grounded Answer)
+  - Grounded in Docs : ['kb_006']
+  - Generated Answer : According to Naukri.com policy (kb_006): e referee's active tenure. Referrals must be registered prior to the candidate's initial application submission, and members of the Talent Acquisition team and hiring managers are ineligible for bonus nical and managerial roles carry an incentive bonus of fifty thousand rupees, disbursed in two equal installments at three months and six months of the referee's active tenure. Referrals must be regis Existing employees are encouraged to refer qualified talent through the internal employee referral module on Naukri.com. Successful referrals for technical and managerial roles carry an incentive bonu
+  - Retrieved Chunks :
+      1. [kb_006_fixed_03] sim=0.5675: e referee's active tenure. Referrals must be registered prior to the candidate's initial application...
+      2. [kb_006_fixed_02] sim=0.5494: nical and managerial roles carry an incentive bonus of fifty thousand rupees, disbursed in two equal...
+      3. [kb_006_fixed_01] sim=0.4822: Existing employees are encouraged to refer qualified talent through the internal employee referral m...
+
+[Collection 2: sentence_chunks]
+  - Top-1 Cosine Sim : 0.6948 (Threshold: 0.38)
+  - Fallback Status  : PASSED (Grounded Answer)
+  - Grounded in Docs : ['kb_006']
+  - Generated Answer : According to Naukri.com policy (kb_006): Successful referrals for technical and managerial roles carry an incentive bonus of fifty thousand rupees, disbursed in two equal installments at three months and six months of the referee's active tenure. Referrals must be registered prior to the candidate's initial application submission, and members of the Talent Acquisition team and hiring managers are ineligible for bonus payouts for roles within their reporting hierarchy. Existing employees are encouraged to refer qualified talent through the internal employee referral module on Naukri.com.
+  - Retrieved Chunks :
+      1. [kb_006_sent_02] sim=0.6948: Successful referrals for technical and managerial roles carry an incentive bonus of fifty thousand r...
+      2. [kb_006_sent_03] sim=0.6768: Referrals must be registered prior to the candidate's initial application submission, and members of...
+      3. [kb_006_sent_01] sim=0.3824: Existing employees are encouraged to refer qualified talent through the internal employee referral m...
+
+--- [Q6] OUT_OF_SCOPE: "What is the best recipe for baking chocolate cake at home?" ---
+Expected Target Document: None (Out of Scope)
+
+[Collection 1: fixed_size_chunks]
+  - Top-1 Cosine Sim : 0.0998 (Threshold: 0.38)
+  - Fallback Status  : TRIGGERED (Refusal)
+  - Grounded in Docs : []
+  - Generated Answer : I don't know based on the available policy documents. The query falls outside the scope of current Naukri.com HR and hiring policies.
+  - Retrieved Chunks :
+      1. [kb_012_fixed_03] sim=0.0998: icable Indian data privacy regulations. Candidates may exercise their right to update, correct, or r...
+      2. [kb_013_fixed_02] sim=0.0764: nths. Sabbatical requests must be submitted at least sixty days in advance and require written appro...
+      3. [kb_009_fixed_01] sim=0.0757: Employees in eligible business functions may apply for a hybrid working model permitting up to two d...
+
+[Collection 2: sentence_chunks]
+  - Top-1 Cosine Sim : 0.0753 (Threshold: 0.38)
+  - Fallback Status  : TRIGGERED (Refusal)
+  - Grounded in Docs : []
+  - Generated Answer : I don't know based on the available policy documents. The query falls outside the scope of current Naukri.com HR and hiring policies.
+  - Retrieved Chunks :
+      1. [kb_009_sent_01] sim=0.0753: Employees in eligible business functions may apply for a hybrid working model permitting up to two d...
+      2. [sentence_kb_013_sabbatical_1] sim=0.0559: Sabbatical requests must be submitted at least sixty days in advance and require written approval fr...
+      3. [kb_013_sent_02] sim=0.0559: Sabbatical requests must be submitted at least sixty days in advance and require written approval fr...
+
+======================================================================
+ACCEPTANCE CRITERIA VERIFICATION:
+  - In-Scope Queries (Q1-Q5)   : 5/5 Grounded Answers Successfully Generated
+  - Out-of-Scope Query (Q6)     : 1/1 Refusal Fallback Triggered Correctly
+  - Both Collections Evaluated : YES
+======================================================================

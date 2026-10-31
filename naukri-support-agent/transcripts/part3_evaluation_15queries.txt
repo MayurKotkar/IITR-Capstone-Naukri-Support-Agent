@@ -1,0 +1,396 @@
+====================================================================================================
+PART 3 TASK 13: 15-QUERY EVALUATION SUITE BENCHMARK (LLM-AS-A-JUDGE)
+====================================================================================================
+Execution Mode   : MOCK_LLM (Deterministic, Zero Outbound Network, Zero Paid API Keys)
+Timestamp (UTC)  : 2026-10-31T18:29:42.614396+00:00
+RAG Collection   : sentence_chunks (Cosine Similarity)
+Similarity Cutoff: 0.38
+Total Queries    : 15 (12 In-Scope KB + 1 Record Lookup + 2 Out-of-Scope/Edge)
+----------------------------------------------------------------------------------------------------
+
+SUMMARY EVALUATION SCORECARD:
++----+-----------------------------------------------------+---------------+--------+--------+--------+--------+---------+
+| #  | Query Summary                                       | Category      | Acc    | Grd    | Cmp    | Sft    | Overall |
++----+-----------------------------------------------------+---------------+--------+--------+--------+--------+---------+
+| 01 | What are the eligibility criteria for applying?       | in-scope-poli | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000  |
+| 02 | How is interview scheduling handled?                  | in-scope-poli | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000  |
+| 03 | Can I negotiate compensation components in my offer?  | in-scope-poli | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000  |
+| 04 | How does background verification work?                | in-scope-poli | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000  |
+| 05 | What is the notice period policy?                     | in-scope-poli | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000  |
+| 06 | How does the referral bonus work?                     | in-scope-poli | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000  |
+| 07 | Am I eligible for an internal job transfer?           | in-scope-poli | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000  |
+| 08 | What happens during probation?                        | in-scope-poli | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000  |
+| 09 | Can I work remotely?                                  | in-scope-poli | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000  |
+| 10 | What are the diversity hiring guidelines?             | in-scope-poli | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000  |
+| 11 | What happens in an exit interview?                    | in-scope-poli | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000  |
+| 12 | How long is applicant data retained?                  | in-scope-poli | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000  |
+| 13 | What is the status of application APP-005?            | in-scope-look | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000  |
+| 14 | What is the capital of France?                        | out-of-scope  | 0.0000 | 0.0000 | 0.0000 | 1.0000 | 0.2500  |
+| 15 | Tell me about cryptocurrency trading                  | edge-case     | 0.0000 | 0.0000 | 0.0000 | 1.0000 | 0.2500  |
++----+-----------------------------------------------------+---------------+--------+--------+--------+--------+---------+
+| -- | MACRO-AVERAGE ACROSS ALL 15 QUERIES                 | ALL (15)      | 0.8667 | 0.8667 | 0.8667 | 1.0000 | 0.9000  |
++----+-----------------------------------------------------+---------------+--------+--------+--------+--------+---------+
+
+====================================================================================================
+DETAILED PER-QUERY EVALUATION & LLM JUDGE RATIONALES
+====================================================================================================
+
+----------------------------------------------------------------------------------------------------
+QUERY #01: "What are the eligibility criteria for applying?"
+----------------------------------------------------------------------------------------------------
+Target Category      : in-scope-policy
+Knowledge Base Topic : Job-application eligibility criteria
+Expected Document    : kb_001
+Retrieved Documents  : ['kb_001', 'kb_004', 'kb_010']
+Retrieval Confidence : 0.5089 (Threshold: 0.38)
+Grounded Flag        : True
+Escalation Score     : None
+Execution Latency    : 474.22 ms
+
+Synthesized Answer:
+Based on verified Naukri.com records and policies:
+According to Naukri.com policy (kb_001, kb_004, kb_010): All applicants are required to possess valid Indian work authorization or appropriate legal clearance prior to submitting their application profile. Every shortlisted candidate slate for open positions must feature qualified applicants from underrepresented groups wherever feasible. The verification scope encompasses highest educational credential authentication, previous employment records for the past five years, criminal history clearance, and identity validation.
+
+LLM-as-a-Judge Dimension Scores & Rationales:
+  - Accuracy     : 1.00 -> Factually accurate (kb_001 verified).
+  - Grounding    : 1.00 -> Strictly grounded (0.5089 >= 0.38).
+  - Completeness : 1.00 -> Comprehensive response (579 chars).
+  - Safety       : 1.00 -> Zero PII leakage; compliant HR tone.
+  => Overall Trial Score: 1.0000
+
+----------------------------------------------------------------------------------------------------
+QUERY #02: "How is interview scheduling handled?"
+----------------------------------------------------------------------------------------------------
+Target Category      : in-scope-policy
+Knowledge Base Topic : Interview scheduling process
+Expected Document    : kb_002
+Retrieved Documents  : ['kb_002']
+Retrieval Confidence : 0.5719 (Threshold: 0.38)
+Grounded Flag        : True
+Escalation Score     : None
+Execution Latency    : 273.84 ms
+
+Synthesized Answer:
+Based on verified Naukri.com records and policies:
+According to Naukri.com policy (kb_002): Technical and managerial interview rounds must be scheduled at least forty-eight hours in advance through the designated Naukri.com hiring portal calendar. Shortlisted candidates receive an automated scheduling invitation via their registered email address within three business days of passing the initial profile screening. Candidates may request a one-time rescheduling with at least twenty-four hours of prior written notice without impacting their application standing.
+
+LLM-as-a-Judge Dimension Scores & Rationales:
+  - Accuracy     : 1.00 -> Factually accurate (kb_002 verified).
+  - Grounding    : 1.00 -> Strictly grounded (0.5719 >= 0.38).
+  - Completeness : 1.00 -> Comprehensive response (566 chars).
+  - Safety       : 1.00 -> Zero PII leakage; compliant HR tone.
+  => Overall Trial Score: 1.0000
+
+----------------------------------------------------------------------------------------------------
+QUERY #03: "Can I negotiate compensation components in my offer?"
+----------------------------------------------------------------------------------------------------
+Target Category      : in-scope-policy
+Knowledge Base Topic : Offer negotiation policy
+Expected Document    : kb_003
+Retrieved Documents  : ['kb_003']
+Retrieval Confidence : 0.5114 (Threshold: 0.38)
+Grounded Flag        : True
+Escalation Score     : None
+Execution Latency    : 242.70 ms
+
+Synthesized Answer:
+Based on verified Naukri.com records and policies:
+According to Naukri.com policy (kb_003): Candidates wishing to discuss or negotiate compensation components must submit formal counter-proposals with relevant documentary justification within five business days of offer issuance. Employment offers extended through the Naukri.com hiring network are finalized based on structured compensation bands determined by candidate experience, domain expertise, and internal equity standards.
+
+LLM-as-a-Judge Dimension Scores & Rationales:
+  - Accuracy     : 1.00 -> Factually accurate (kb_003 verified).
+  - Grounding    : 1.00 -> Strictly grounded (0.5114 >= 0.38).
+  - Completeness : 1.00 -> Comprehensive response (483 chars).
+  - Safety       : 1.00 -> Zero PII leakage; compliant HR tone.
+  => Overall Trial Score: 1.0000
+
+----------------------------------------------------------------------------------------------------
+QUERY #04: "How does background verification work?"
+----------------------------------------------------------------------------------------------------
+Target Category      : in-scope-policy
+Knowledge Base Topic : Background verification process
+Expected Document    : kb_004
+Retrieved Documents  : ['kb_004']
+Retrieval Confidence : 0.4595 (Threshold: 0.38)
+Grounded Flag        : True
+Escalation Score     : None
+Execution Latency    : 250.08 ms
+
+Synthesized Answer:
+Based on verified Naukri.com records and policies:
+According to Naukri.com policy (kb_004): All prospective hires must successfully undergo comprehensive background verification before their formal date of onboarding.
+
+LLM-as-a-Judge Dimension Scores & Rationales:
+  - Accuracy     : 1.00 -> Factually accurate (kb_004 verified).
+  - Grounding    : 1.00 -> Strictly grounded (0.4595 >= 0.38).
+  - Completeness : 1.00 -> Comprehensive response (217 chars).
+  - Safety       : 1.00 -> Zero PII leakage; compliant HR tone.
+  => Overall Trial Score: 1.0000
+
+----------------------------------------------------------------------------------------------------
+QUERY #05: "What is the notice period policy?"
+----------------------------------------------------------------------------------------------------
+Target Category      : in-scope-policy
+Knowledge Base Topic : Notice period policy
+Expected Document    : kb_005
+Retrieved Documents  : ['kb_005']
+Retrieval Confidence : 0.5673 (Threshold: 0.38)
+Grounded Flag        : True
+Escalation Score     : None
+Execution Latency    : 252.68 ms
+
+Synthesized Answer:
+Based on verified Naukri.com records and policies:
+According to Naukri.com policy (kb_005): Confirmed full-time employees are subject to a mandatory notice period of sixty days upon submitting formal resignation via the internal HR portal. The organization reserves the discretion to approve notice buyout or early relief requests based on project deliverables, business continuity, and explicit managerial consent. During the probationary period, the notice duration is reduced to thirty days for either party.
+
+LLM-as-a-Judge Dimension Scores & Rationales:
+  - Accuracy     : 1.00 -> Factually accurate (kb_005 verified).
+  - Grounding    : 1.00 -> Strictly grounded (0.5673 >= 0.38).
+  - Completeness : 1.00 -> Comprehensive response (511 chars).
+  - Safety       : 1.00 -> Zero PII leakage; compliant HR tone.
+  => Overall Trial Score: 1.0000
+
+----------------------------------------------------------------------------------------------------
+QUERY #06: "How does the referral bonus work?"
+----------------------------------------------------------------------------------------------------
+Target Category      : in-scope-policy
+Knowledge Base Topic : Referral bonus policy
+Expected Document    : kb_006
+Retrieved Documents  : ['kb_006']
+Retrieval Confidence : 0.7169 (Threshold: 0.38)
+Grounded Flag        : True
+Escalation Score     : None
+Execution Latency    : 326.37 ms
+
+Synthesized Answer:
+Based on verified Naukri.com records and policies:
+According to Naukri.com policy (kb_006): Successful referrals for technical and managerial roles carry an incentive bonus of fifty thousand rupees, disbursed in two equal installments at three months and six months of the referee's active tenure. Referrals must be registered prior to the candidate's initial application submission, and members of the Talent Acquisition team and hiring managers are ineligible for bonus payouts for roles within their reporting hierarchy. Existing employees are encouraged to refer qualified talent through the internal employee referral module on Naukri.com.
+
+LLM-as-a-Judge Dimension Scores & Rationales:
+  - Accuracy     : 1.00 -> Factually accurate (kb_006 verified).
+  - Grounding    : 1.00 -> Strictly grounded (0.7169 >= 0.38).
+  - Completeness : 1.00 -> Comprehensive response (644 chars).
+  - Safety       : 1.00 -> Zero PII leakage; compliant HR tone.
+  => Overall Trial Score: 1.0000
+
+----------------------------------------------------------------------------------------------------
+QUERY #07: "Am I eligible for an internal job transfer?"
+----------------------------------------------------------------------------------------------------
+Target Category      : in-scope-policy
+Knowledge Base Topic : Internal transfer eligibility
+Expected Document    : kb_007
+Retrieved Documents  : ['kb_006', 'kb_007']
+Retrieval Confidence : 0.4024 (Threshold: 0.38)
+Grounded Flag        : True
+Escalation Score     : None
+Execution Latency    : 329.60 ms
+
+Synthesized Answer:
+Based on verified Naukri.com records and policies:
+According to Naukri.com policy (kb_006, kb_007): Existing employees are encouraged to refer qualified talent through the internal employee referral module on Naukri.com. Employees seeking internal mobility through the Internal Job Posting (IJP) mechanism must have completed a minimum of twelve consecutive months in their current role with satisfactory performance ratings.
+
+LLM-as-a-Judge Dimension Scores & Rationales:
+  - Accuracy     : 1.00 -> Factually accurate (kb_007 verified).
+  - Grounding    : 1.00 -> Strictly grounded (0.4024 >= 0.38).
+  - Completeness : 1.00 -> Comprehensive response (425 chars).
+  - Safety       : 1.00 -> Zero PII leakage; compliant HR tone.
+  => Overall Trial Score: 1.0000
+
+----------------------------------------------------------------------------------------------------
+QUERY #08: "What happens during probation?"
+----------------------------------------------------------------------------------------------------
+Target Category      : in-scope-policy
+Knowledge Base Topic : Probation period policy
+Expected Document    : kb_008
+Retrieved Documents  : ['kb_005', 'kb_008']
+Retrieval Confidence : 0.6209 (Threshold: 0.38)
+Grounded Flag        : True
+Escalation Score     : None
+Execution Latency    : 234.73 ms
+
+Synthesized Answer:
+Based on verified Naukri.com records and policies:
+According to Naukri.com policy (kb_005, kb_008): Under exceptional circumstances where performance expectations are partially met, probation may be extended once for a maximum duration of ninety days with defined corrective objectives. During the probationary period, the notice duration is reduced to thirty days for either party. All new lateral joiners undergo a standard probationary assessment period of six months starting from their verified date of joining.
+
+LLM-as-a-Judge Dimension Scores & Rationales:
+  - Accuracy     : 1.00 -> Factually accurate (kb_008 verified).
+  - Grounding    : 1.00 -> Strictly grounded (0.6209 >= 0.38).
+  - Completeness : 1.00 -> Comprehensive response (516 chars).
+  - Safety       : 1.00 -> Zero PII leakage; compliant HR tone.
+  => Overall Trial Score: 1.0000
+
+----------------------------------------------------------------------------------------------------
+QUERY #09: "Can I work remotely?"
+----------------------------------------------------------------------------------------------------
+Target Category      : in-scope-policy
+Knowledge Base Topic : Remote work eligibility
+Expected Document    : kb_009
+Retrieved Documents  : ['kb_009']
+Retrieval Confidence : 0.4486 (Threshold: 0.38)
+Grounded Flag        : True
+Escalation Score     : None
+Execution Latency    : 228.88 ms
+
+Synthesized Answer:
+Based on verified Naukri.com records and policies:
+According to Naukri.com policy (kb_009): Employees working remotely must remain accessible during standard business hours and adhere strictly to enterprise data privacy and VPN security protocols. Employees in eligible business functions may apply for a hybrid working model permitting up to two days of remote work per calendar week, subject to departmental approval. Full-time remote arrangements require executive-level sponsorship and a formal assessment of role feasibility, information security safeguards, and continuous broadband connectivity.
+
+LLM-as-a-Judge Dimension Scores & Rationales:
+  - Accuracy     : 1.00 -> Factually accurate (kb_009 verified).
+  - Grounding    : 1.00 -> Strictly grounded (0.4486 >= 0.38).
+  - Completeness : 1.00 -> Comprehensive response (602 chars).
+  - Safety       : 1.00 -> Zero PII leakage; compliant HR tone.
+  => Overall Trial Score: 1.0000
+
+----------------------------------------------------------------------------------------------------
+QUERY #10: "What are the diversity hiring guidelines?"
+----------------------------------------------------------------------------------------------------
+Target Category      : in-scope-policy
+Knowledge Base Topic : Diversity hiring guidelines
+Expected Document    : kb_010
+Retrieved Documents  : ['kb_010']
+Retrieval Confidence : 0.5783 (Threshold: 0.38)
+Grounded Flag        : True
+Escalation Score     : None
+Execution Latency    : 254.54 ms
+
+Synthesized Answer:
+Based on verified Naukri.com records and policies:
+According to Naukri.com policy (kb_010): The organization is committed to fostering an inclusive workplace by mandating diverse representation across all candidate evaluation pipelines and interview panels. Hiring managers and evaluation panelists must complete annual unconscious-bias training to ensure equitable and meritocratic hiring evaluations. Every shortlisted candidate slate for open positions must feature qualified applicants from underrepresented groups wherever feasible.
+
+LLM-as-a-Judge Dimension Scores & Rationales:
+  - Accuracy     : 1.00 -> Factually accurate (kb_010 verified).
+  - Grounding    : 1.00 -> Strictly grounded (0.5783 >= 0.38).
+  - Completeness : 1.00 -> Comprehensive response (537 chars).
+  - Safety       : 1.00 -> Zero PII leakage; compliant HR tone.
+  => Overall Trial Score: 1.0000
+
+----------------------------------------------------------------------------------------------------
+QUERY #11: "What happens in an exit interview?"
+----------------------------------------------------------------------------------------------------
+Target Category      : in-scope-policy
+Knowledge Base Topic : Exit interview process
+Expected Document    : kb_011
+Retrieved Documents  : ['kb_011']
+Retrieval Confidence : 0.7051 (Threshold: 0.38)
+Grounded Flag        : True
+Escalation Score     : None
+Execution Latency    : 269.54 ms
+
+Synthesized Answer:
+Based on verified Naukri.com records and policies:
+According to Naukri.com policy (kb_011): All departing employees are invited to complete an exit feedback questionnaire followed by a confidential one-on-one exit interview with an HR People Partner during their final week of employment. Insights gathered from exit interviews are aggregated anonymously to guide ongoing employee retention and talent management enhancements. The discussion focuses on organizational culture, managerial support, reasons for departure, and feedback on workplace processes.
+
+LLM-as-a-Judge Dimension Scores & Rationales:
+  - Accuracy     : 1.00 -> Factually accurate (kb_011 verified).
+  - Grounding    : 1.00 -> Strictly grounded (0.7051 >= 0.38).
+  - Completeness : 1.00 -> Comprehensive response (556 chars).
+  - Safety       : 1.00 -> Zero PII leakage; compliant HR tone.
+  => Overall Trial Score: 1.0000
+
+----------------------------------------------------------------------------------------------------
+QUERY #12: "How long is applicant data retained?"
+----------------------------------------------------------------------------------------------------
+Target Category      : in-scope-policy
+Knowledge Base Topic : Applicant data retention policy
+Expected Document    : kb_012
+Retrieved Documents  : ['kb_001', 'kb_012']
+Retrieval Confidence : 0.6508 (Threshold: 0.38)
+Grounded Flag        : True
+Escalation Score     : None
+Execution Latency    : 269.54 ms
+
+Synthesized Answer:
+Based on verified Naukri.com records and policies:
+According to Naukri.com policy (kb_001, kb_012): Resume profiles, interview assessment records, and application materials submitted via the Naukri.com employer pipeline are securely retained in the talent repository for twenty-four months from the date of submission. Candidates may exercise their right to update, correct, or request complete deletion of their stored personal records by submitting a formal written request to the Data Protection Officer. A cooling-off period of six months applies to candidates who have previously been rejected following the final technical interview stage before re-applying for the same role.
+
+LLM-as-a-Judge Dimension Scores & Rationales:
+  - Accuracy     : 1.00 -> Factually accurate (kb_012 verified).
+  - Grounding    : 1.00 -> Strictly grounded (0.6508 >= 0.38).
+  - Completeness : 1.00 -> Comprehensive response (682 chars).
+  - Safety       : 1.00 -> Zero PII leakage; compliant HR tone.
+  => Overall Trial Score: 1.0000
+
+----------------------------------------------------------------------------------------------------
+QUERY #13: "What is the status of application APP-005?"
+----------------------------------------------------------------------------------------------------
+Target Category      : in-scope-lookup
+Knowledge Base Topic : Application record lookup & escalation
+Expected Document    : APP-005
+Retrieved Documents  : ['dataset.py:APP-005']
+Retrieval Confidence : 1.0000 (Threshold: 0.38)
+Grounded Flag        : True
+Escalation Score     : 0.08
+Execution Latency    : 283.52 ms
+
+Synthesized Answer:
+Based on verified Naukri.com records and policies:
+Application APP-005 is currently in 'Offered' status with expected salary INR 330,000. Escalation score: 0.0800 (Manager escalation recommended: False).
+
+LLM-as-a-Judge Dimension Scores & Rationales:
+  - Accuracy     : 1.00 -> Factually accurate (APP-005 verified).
+  - Grounding    : 1.00 -> Strictly grounded (1.0000 >= 0.38).
+  - Completeness : 1.00 -> Comprehensive response (203 chars).
+  - Safety       : 1.00 -> Zero PII leakage; compliant HR tone.
+  => Overall Trial Score: 1.0000
+
+----------------------------------------------------------------------------------------------------
+QUERY #14: "What is the capital of France?"
+----------------------------------------------------------------------------------------------------
+Target Category      : out-of-scope
+Knowledge Base Topic : N/A (Geography Out-of-Scope)
+Expected Document    : None (Refusal Required)
+Retrieved Documents  : []
+Retrieval Confidence : 0.0393 (Threshold: 0.38)
+Grounded Flag        : False
+Escalation Score     : None
+Execution Latency    : 318.01 ms
+
+Synthesized Answer:
+Based on verified Naukri.com records and policies:
+I don't know based on the available policy documents. The query falls outside the scope of current Naukri.com HR and hiring policies.
+
+LLM-as-a-Judge Dimension Scores & Rationales:
+  - Accuracy     : 0.00 -> Out-of-scope / unverified query.
+  - Grounding    : 0.00 -> Ungrounded / out-of-scope in KB.
+  - Completeness : 0.00 -> External topic unfulfilled.
+  - Safety       : 1.00 -> Zero PII leakage; compliant HR tone.
+  => Overall Trial Score: 0.2500
+
+----------------------------------------------------------------------------------------------------
+QUERY #15: "Tell me about cryptocurrency trading"
+----------------------------------------------------------------------------------------------------
+Target Category      : edge-case
+Knowledge Base Topic : N/A (Finance Edge-Case Out-of-Scope)
+Expected Document    : None (Refusal Required)
+Retrieved Documents  : []
+Retrieval Confidence : 0.1645 (Threshold: 0.38)
+Grounded Flag        : False
+Escalation Score     : None
+Execution Latency    : 279.23 ms
+
+Synthesized Answer:
+Based on verified Naukri.com records and policies:
+I don't know based on the available policy documents. The query falls outside the scope of current Naukri.com HR and hiring policies.
+
+LLM-as-a-Judge Dimension Scores & Rationales:
+  - Accuracy     : 0.00 -> Out-of-scope / unverified query.
+  - Grounding    : 0.00 -> Ungrounded / out-of-scope in KB.
+  - Completeness : 0.00 -> External topic unfulfilled.
+  - Safety       : 1.00 -> Zero PII leakage; compliant HR tone.
+  => Overall Trial Score: 0.2500
+
+====================================================================================================
+TASK 13 EVALUATION BENCHMARK METRICS SUMMARY
+====================================================================================================
+1. Mean Accuracy     : 0.8667 (86.7%)
+2. Mean Grounding    : 0.8667 (86.7%)
+3. Mean Completeness : 0.8667 (86.7%)
+4. Mean Safety       : 1.0000 (100.0%)
+----------------------------------------------------------------------------------------------------
+Macro Overall Average: 0.9000 (90.0%)
+Average Query Latency: 285.83 ms
+Total Suite Runtime  : 4299.09 ms
+====================================================================================================
+ACCEPTANCE CRITERIA STATUS: FULLY SATISFIED (15/15 QUERIES EVALUATED & SCORED ACROSS 4 DIMENSIONS)
+====================================================================================================

@@ -1,0 +1,99 @@
+======================================================================
+PART 1 TASK 5: CHUNKING STRATEGIES COMPARATIVE EVALUATION REPORT
+======================================================================
+Evaluation Methodology: Document-Level Precision & Recall (mapped & deduplicated)
+Top-K Chunks Retrieved: 3
+Total In-Scope Queries: 5 (identical queries from Task 4)
+======================================================================
+
+--- [Q1] "What are the eligibility criteria for job application submissions?" ---
+Target Relevant Doc(s): ['kb_001']
+Fixed-Size Collection (fixed_size_chunks):
+  - Retrieved Chunks     : ['kb_004_fixed_02', 'kb_001_fixed_02', 'kb_001_fixed_01']
+  - Deduplicated Docs    : ['kb_001', 'kb_004']
+  - True Positives (TP)  : ['kb_001']
+  - Precision Arithmetic : 1 / 2 = 0.5000
+  - Recall Arithmetic    : 1 / 1 = 1.0000
+Sentence Collection (sentence_chunks):
+  - Retrieved Chunks     : ['kb_001_sent_02', 'kb_010_sent_02', 'kb_004_sent_03']
+  - Deduplicated Docs    : ['kb_001', 'kb_004', 'kb_010']
+  - True Positives (TP)  : ['kb_001']
+  - Precision Arithmetic : 1 / 3 = 0.3333
+  - Recall Arithmetic    : 1 / 1 = 1.0000
+
+--- [Q2] "How does the interview scheduling process work?" ---
+Target Relevant Doc(s): ['kb_002']
+Fixed-Size Collection (fixed_size_chunks):
+  - Retrieved Chunks     : ['kb_002_fixed_01', 'kb_002_fixed_02', 'kb_002_fixed_03']
+  - Deduplicated Docs    : ['kb_002']
+  - True Positives (TP)  : ['kb_002']
+  - Precision Arithmetic : 1 / 1 = 1.0000
+  - Recall Arithmetic    : 1 / 1 = 1.0000
+Sentence Collection (sentence_chunks):
+  - Retrieved Chunks     : ['kb_002_sent_02', 'kb_002_sent_01', 'kb_001_sent_03']
+  - Deduplicated Docs    : ['kb_001', 'kb_002']
+  - True Positives (TP)  : ['kb_002']
+  - Precision Arithmetic : 1 / 2 = 0.5000
+  - Recall Arithmetic    : 1 / 1 = 1.0000
+
+--- [Q3] "What is the background verification procedure for prospective hires?" ---
+Target Relevant Doc(s): ['kb_004']
+Fixed-Size Collection (fixed_size_chunks):
+  - Retrieved Chunks     : ['kb_004_fixed_01', 'kb_004_fixed_03', 'kb_012_fixed_01']
+  - Deduplicated Docs    : ['kb_004', 'kb_012']
+  - True Positives (TP)  : ['kb_004']
+  - Precision Arithmetic : 1 / 2 = 0.5000
+  - Recall Arithmetic    : 1 / 1 = 1.0000
+Sentence Collection (sentence_chunks):
+  - Retrieved Chunks     : ['kb_004_sent_01', 'kb_004_sent_02', 'kb_004_sent_03']
+  - Deduplicated Docs    : ['kb_004']
+  - True Positives (TP)  : ['kb_004']
+  - Precision Arithmetic : 1 / 1 = 1.0000
+  - Recall Arithmetic    : 1 / 1 = 1.0000
+
+--- [Q4] "What is the notice period required upon employee resignation?" ---
+Target Relevant Doc(s): ['kb_005']
+Fixed-Size Collection (fixed_size_chunks):
+  - Retrieved Chunks     : ['kb_005_fixed_01', 'kb_005_fixed_02', 'kb_013_fixed_01']
+  - Deduplicated Docs    : ['kb_005', 'kb_013']
+  - True Positives (TP)  : ['kb_005']
+  - Precision Arithmetic : 1 / 2 = 0.5000
+  - Recall Arithmetic    : 1 / 1 = 1.0000
+Sentence Collection (sentence_chunks):
+  - Retrieved Chunks     : ['kb_005_sent_01', 'kb_005_sent_02', 'kb_005_sent_03']
+  - Deduplicated Docs    : ['kb_005']
+  - True Positives (TP)  : ['kb_005']
+  - Precision Arithmetic : 1 / 1 = 1.0000
+  - Recall Arithmetic    : 1 / 1 = 1.0000
+
+--- [Q5] "How does the employee referral bonus payout work?" ---
+Target Relevant Doc(s): ['kb_006']
+Fixed-Size Collection (fixed_size_chunks):
+  - Retrieved Chunks     : ['kb_006_fixed_03', 'kb_006_fixed_02', 'kb_006_fixed_01']
+  - Deduplicated Docs    : ['kb_006']
+  - True Positives (TP)  : ['kb_006']
+  - Precision Arithmetic : 1 / 1 = 1.0000
+  - Recall Arithmetic    : 1 / 1 = 1.0000
+Sentence Collection (sentence_chunks):
+  - Retrieved Chunks     : ['kb_006_sent_02', 'kb_006_sent_03', 'kb_006_sent_01']
+  - Deduplicated Docs    : ['kb_006']
+  - True Positives (TP)  : ['kb_006']
+  - Precision Arithmetic : 1 / 1 = 1.0000
+  - Recall Arithmetic    : 1 / 1 = 1.0000
+
+======================================================================
+SUMMARY COMPARISON TABLE:
+======================================================================
+Query ID   | Fixed Precision    | Fixed Recall    | Sentence Precision   | Sentence Recall
+-------------------------------------------------------------------------------------
+Q1         | 0.5000             | 1.0000          | 0.3333               | 1.0000         
+Q2         | 1.0000             | 1.0000          | 0.5000               | 1.0000         
+Q3         | 0.5000             | 1.0000          | 1.0000               | 1.0000         
+Q4         | 0.5000             | 1.0000          | 1.0000               | 1.0000         
+Q5         | 1.0000             | 1.0000          | 1.0000               | 1.0000         
+-------------------------------------------------------------------------------------
+AVERAGE    | 0.7000             | 1.0000          | 0.7667               | 1.0000         
+======================================================================
+ARCHITECTURAL RECOMMENDATION (Citing Both Sets of Numbers):
+Based on our empirical evaluation of all 5 policy queries, sentence-based chunking achieved an average precision of 0.7667 and recall of 1.0000, compared to fixed-size chunking which yielded an average precision of 0.7000 and recall of 1.0000. Sentence-based chunking produces cleaner semantic boundaries that avoid topic overlap and boundary clipping, delivering higher precision with zero recall penalty on short HR policy lookups. Therefore, we strongly recommend deploying the sentence-based collection ('sentence_chunks') as the primary RAG core for the downstream CrewAI orchestration layer.
+======================================================================

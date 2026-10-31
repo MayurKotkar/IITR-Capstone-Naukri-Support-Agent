@@ -1,0 +1,35 @@
+================================================================================
+NAUKRI.COM DOMAIN SUPPORT AGENT: AI GOVERNANCE VERIFICATION
+TASK 15 (PART B): RUNTIME LAYER — COST & TOKEN BUDGET CAP ENFORCEMENT
+================================================================================
+Timestamp: 2026-10-31T18:29:42.728352+00:00
+Strict Budget Cap: 1000 tokens per request
+Rejection Policy: Fail-Fast HTTP 429 / BudgetExceededException
+--------------------------------------------------------------------------------
+
+[TEST CASE 1: STANDARD IN-SCOPE QUERY (WITHIN BUDGET)]
+  Query Text        : "What is the notice period required upon employee resignation?"
+  Prompt Tokens     : 16 tokens
+  Completion Buffer : 150 tokens
+  Total Estimated   : 166 tokens
+  Threshold Cap     : 1000 tokens
+  Enforcement Action: PERMITTED (Within Budget: 166 <= 1000)
+
+[TEST CASE 2: DELIBERATELY OVERSIZED REQUEST (EXCEEDS BUDGET CAP)]
+  Query Character Count : 11610 chars
+  Prompt Tokens         : 3055 tokens
+  Completion Buffer     : 150 tokens
+  Total Estimated       : 3205 tokens
+  Threshold Cap         : 1000 tokens
+  Enforcement Action    : REJECTED (Fail-Fast Blocked)
+  Exception Raised      : BudgetExceededException
+  HTTP Status Code      : 429 Too Many Requests (Token Quota Exceeded)
+  Guard Message         : BUDGET CAP EXCEEDED (HTTP 429): Request estimated at 3205 tokens (3055 prompt tokens + 150 completion tokens), which exceeds the strict runtime budget cap of 1000 tokens per request. Query rejected to prevent denial-of-wallet exhaustion.
+
+================================================================================
+RUNTIME GOVERNANCE CONCLUSION:
+  The runtime layer successfully enforces the 1000-token budget ceiling, protecting
+  the Naukri.com infrastructure against denial-of-wallet exhaustion and unbounded loops.
+================================================================================
+VERIFICATION STATUS: PASSED
+================================================================================

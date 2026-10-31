@@ -1,0 +1,43 @@
+======================================================================
+PART 1 TASK 4: EMPIRICAL THRESHOLD CALIBRATION REPORT
+======================================================================
+Embedding Model: all-MiniLM-L6-v2
+Fixed Collection Name   : fixed_size_chunks
+Sentence Collection Name: sentence_chunks
+----------------------------------------------------------------------
+1. IN-SCOPE QUERIES MEASUREMENTS (>=3 required):
+  - Query: "What is the notice period required upon employee resignation?"
+    Fixed Top-1 Sim   : 0.7599 (Topic: notice-period policy)
+    Sentence Top-1 Sim: 0.7422 (Topic: notice-period policy)
+  - Query: "How does the employee referral bonus payout work?"
+    Fixed Top-1 Sim   : 0.5675 (Topic: referral-bonus policy)
+    Sentence Top-1 Sim: 0.6948 (Topic: referral-bonus policy)
+  - Query: "What is the background verification procedure for new hires?"
+    Fixed Top-1 Sim   : 0.6455 (Topic: background-verification process)
+    Sentence Top-1 Sim: 0.6681 (Topic: background-verification process)
+  - Query: "What are the eligibility criteria for job application submissions?"
+    Fixed Top-1 Sim   : 0.5145 (Topic: background-verification process)
+    Sentence Top-1 Sim: 0.5613 (Topic: job-application eligibility criteria)
+----------------------------------------------------------------------
+2. OUT-OF-SCOPE QUERIES MEASUREMENTS (>=2 required):
+  - Query: "What is the best recipe for baking sourdough bread at home?"
+    Fixed Top-1 Sim   : 0.1805 (Topic: remote-work eligibility)
+    Sentence Top-1 Sim: 0.1727 (Topic: remote-work eligibility)
+  - Query: "Explain quantum mechanics and wave-particle duality in physics."
+    Fixed Top-1 Sim   : 0.1273 (Topic: exit-interview process)
+    Sentence Top-1 Sim: 0.1159 (Topic: diversity-hiring guidelines)
+  - Query: "What is the current stock price of Apple on NASDAQ?"
+    Fixed Top-1 Sim   : 0.2525 (Topic: internal-transfer eligibility)
+    Sentence Top-1 Sim: 0.1566 (Topic: offer-negotiation policy)
+----------------------------------------------------------------------
+3. OBSERVED CLUSTER DISTRIBUTIONS & THRESHOLD DERIVATION:
+  - In-Scope Cluster Range      : [0.5145, 0.7599]
+  - Out-of-Scope Cluster Range  : [0.1159, 0.2525]
+  - Absolute Separation Gap     : 0.2620
+  - Calibrated Midpoint Formula : round((min(in_scope) + max(out_scope)) / 2, 2)
+  - CALIBRATED THRESHOLD        : 0.38
+  - Justification: Any retrieval score below 0.38 strictly falls into the
+    out-of-scope cluster and triggers the 'I don't know' fallback refusal.
+======================================================================
+CALIBRATION STATUS: SUCCESSFUL — CLEAR CLUSTER SEPARATION ACHIEVED
+======================================================================

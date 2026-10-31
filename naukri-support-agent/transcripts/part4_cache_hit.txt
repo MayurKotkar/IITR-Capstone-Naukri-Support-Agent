@@ -1,0 +1,78 @@
+================================================================================
+NAUKRI.COM DOMAIN SUPPORT AGENT: RESPONSE CACHING VERIFICATION
+TASK 16: IN-MEMORY RESPONSE CACHING & QUERY NORMALIZATION
+================================================================================
+Timestamp: 2026-10-31T18:29:42.639939+00:00
+Cache Strategy: In-Memory Key-Value with Thread-Safe Concurrency
+Normalization: Lowercase + Punctuation Stripping + Whitespace Collapsing
+--------------------------------------------------------------------------------
+
+STEP-BY-STEP QUERY EXECUTION LOG:
+--------------------------------------------------------------------------------
+
+[Query 1A (Initial Miss)]
+  Raw Query      : "What is the notice period required upon employee resignation?"
+  Normalized Key : "what is the notice period required upon employee resignation"
+  Cache Status   : CACHE MISS [CALL RAG/LLM]
+  Latency        : 32.596 ms
+  Calls to LLM   : Total so far = 1
+  Answer Preview : According to Naukri.com policy (kb_005): Confirmed full-time employees are subject to a ma...
+
+[Query 1B (Identical Hit)]
+  Raw Query      : "   what is the notice period required upon employee resignation???   "
+  Normalized Key : "what is the notice period required upon employee resignation"
+  Cache Status   : CACHE HIT [BYPASS LLM]
+  Latency        : 0.032 ms
+  Calls to LLM   : Total so far = 1
+  Answer Preview : According to Naukri.com policy (kb_005): Confirmed full-time employees are subject to a ma...
+
+[Query 2A (Initial Miss)]
+  Raw Query      : "How does the employee referral bonus payout work?"
+  Normalized Key : "how does the employee referral bonus payout work"
+  Cache Status   : CACHE MISS [CALL RAG/LLM]
+  Latency        : 28.068 ms
+  Calls to LLM   : Total so far = 2
+  Answer Preview : According to Naukri.com policy (kb_006): Successful referrals for technical and managerial...
+
+[Query 2B (Identical Hit)]
+  Raw Query      : "HOW DOES THE EMPLOYEE REFERRAL BONUS PAYOUT WORK?"
+  Normalized Key : "how does the employee referral bonus payout work"
+  Cache Status   : CACHE HIT [BYPASS LLM]
+  Latency        : 0.029 ms
+  Calls to LLM   : Total so far = 2
+  Answer Preview : According to Naukri.com policy (kb_006): Successful referrals for technical and managerial...
+
+[Query 3A (Fallback Miss)]
+  Raw Query      : "What is the recipe for baking sourdough bread at home?"
+  Normalized Key : "what is the recipe for baking sourdough bread at home"
+  Cache Status   : CACHE MISS [CALL RAG/LLM]
+  Latency        : 24.739 ms
+  Calls to LLM   : Total so far = 3
+  Answer Preview : I don't know based on the available policy documents. The query falls outside the scope of...
+
+[Query 3B (Fallback Hit)]
+  Raw Query      : "what is the recipe for baking sourdough bread at home"
+  Normalized Key : "what is the recipe for baking sourdough bread at home"
+  Cache Status   : CACHE HIT [BYPASS LLM]
+  Latency        : 0.014 ms
+  Calls to LLM   : Total so far = 3
+  Answer Preview : I don't know based on the available policy documents. The query falls outside the scope of...
+
+================================================================================
+BEFORE/AFTER CACHING PERFORMANCE & TELEMETRY SUMMARY
+================================================================================
+Total Queries Processed : 6
+Cache Misses            : 3 (Initial computation required)
+Cache Hits              : 3 (100% LLM/Vector DB bypassed)
+Hit Ratio               : 50.0%
+Redundant Calls Avoided : 3
+Actual Generator Calls  : 3
+--------------------------------------------------------------------------------
+EMPIRICAL TIMING COMPARISONS:
+  Pair 1 (Notice Period) : Miss=32.60ms vs Hit=0.032ms -> Speedup: 1015.5x
+  Pair 2 (Referral Bonus): Miss=28.07ms vs Hit=0.029ms -> Speedup: 981.4x
+  Pair 3 (Out-of-Scope)  : Miss=24.74ms vs Hit=0.014ms -> Speedup: 1706.2x
+  Estimated Time Saved   : 85.40 ms
+================================================================================
+VERIFICATION STATUS: PASSED
+================================================================================

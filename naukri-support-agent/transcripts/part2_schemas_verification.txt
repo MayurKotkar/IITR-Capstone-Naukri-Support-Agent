@@ -1,0 +1,5 @@
+PART 2 TASK 9: STRUCTURED OUTPUT SCHEMA VERIFICATION
+AgentResponse schema verified successfully with best-practice default factories.
+- Test 1 Policy: {'query': 'What is the notice period policy?', 'answer': 'Employees must serve a 60-day notice period upon resignation.', 'source_documents': ['kb_005'], 'confidence_score': 0.74, 'is_grounded': True, 'escalation_score': None, 'guardrail_flags': {}}
+- Test 2 Lookup: {'query': 'Check status of APP-045', 'answer': 'Application APP-045 is in Screening. Escalation recommended.', 'source_documents': ['dataset.py:APP-045'], 'confidence_score': 1.0, 'is_grounded': True, 'escalation_score': 0.96, 'guardrail_flags': {}}
+- Test 3 Error Check: Successfully blocked invalid confidence_score 2.5

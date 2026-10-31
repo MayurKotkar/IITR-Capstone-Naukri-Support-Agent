@@ -1,0 +1,11 @@
+PART 2 TASK 7: CREWAI POLICY RETRIEVAL DEMONSTRATION
+- Query: What is the notice period policy upon employee resignation?
+- Active Agents: HR Policy Retrieval Specialist -> Senior HR Support Composer
+- Tool Invoked: rag_lookup (sentence_chunks collection)
+- Top Similarity: 0.683
+- Grounded Status: True
+- Source Documents: ['kb_005']
+- Final Synthesized Answer:
+Based on verified Naukri.com records and policies:
+According to Naukri.com policy (kb_005): Confirmed full-time employees are subject to a mandatory notice period of sixty days upon submitting formal resignation via the internal HR portal. The organization reserves the discretion to approve notice buyout or early relief requests based on project deliverables, business continuity, and explicit managerial consent. During the probationary period, the notice duration is reduced to thirty days for either party.
+- Pydantic Validation: PASSED

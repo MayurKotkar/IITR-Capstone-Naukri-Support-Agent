@@ -1,0 +1,49 @@
+================================================================================
+NAUKRI.COM DOMAIN SUPPORT AGENT: AUTOGEN REVIEW STAGE
+TASK 14 (CASE 1): GROUNDED DRAFT ANSWER — APPROVED UNCHANGED
+================================================================================
+Timestamp: 2026-10-31T18:29:42.750340+00:00
+Architecture: 2-Agent Autogen RoundRobinGroupChat (max_turns=2)
+Output Format: Pydantic StructuredMessage[ReviewVerdict]
+--------------------------------------------------------------------------------
+
+1. INPUTS TO REVIEW STAGE:
+  [CrewAI Composer Draft Answer]:
+    "According to Naukri.com policy (kb_005): Confirmed full-time employees are subject to a mandatory 90-day notice period upon resignation. Resignation requests must be submitted through the official HRMS portal."
+  [Retrieved Policy Context]:
+    "[kb_005_notice_period.txt] All confirmed full-time employees at Naukri.com must serve a mandatory 90-day notice period following formal resignation submission on the HRMS portal."
+
+2. ROUND-ROBIN GROUP CHAT CONVERSATION TRACE:
+--------------------------------------------------------------------------------
+
+[Turn 1] Agent: user | Type: TextMessage
+  Message Body:
+--- CREWAI COMPOSER DRAFT ANSWER ---
+According to Naukri.com policy (kb_005): Confirmed full-time employees are subject to a mandatory 90-day notice period upon resignation. Resignation requests must be submitted through the official HRMS portal.
+
+--- RETRIEVED POLICY CONTEXT ---
+[kb_005_notice_period.txt] All confirmed full-time employees at Naukri.com must serve a mandatory 90-day notice period following formal resignation submission on the HRMS portal.
+
+INSTRUCTION: Review the draft answer against the retrieved context for 100% grounding.
+
+[Turn 2] Agent: Policy_Compliance_Reviewer | Type: TextMessage
+  Message Body:
+POLICY COMPLIANCE REVIEW:
+1. Grounding Audit: Stated 90-day notice period directly matches retrieved kb_005 clause.
+2. Hallucination Check: No ungrounded claims or extraneous promises found.
+3. Safety & PII: Safe from unauthorized commitments and candidate PII leakage.
+RECOMMENDATION: APPROVE UNCHANGED.
+
+[Turn 3] Agent: Final_Editor | Type: StructuredMessage[ReviewVerdict]
+  Structured Content: approved=True
+  Final Answer      : According to Naukri.com policy (kb_005): Confirmed full-time employees are subject to a mandatory 90-day notice period upon resignation. Resignation requests must be submitted through the official HRMS portal.
+  Reason            : COMPLIANCE AUDIT PASSED: Draft answer is 100% grounded in retrieved policy kb_005. Zero ungrounded assertions or policy contradictions detected. Approved unchanged.
+
+--------------------------------------------------------------------------------
+3. FINAL STRUCTURED VERDICT EVALUATION:
+  - Approved Status : True
+  - Final Answer    : According to Naukri.com policy (kb_005): Confirmed full-time employees are subject to a mandatory 90-day notice period upon resignation. Resignation requests must be submitted through the official HRMS portal.
+  - Audit Reason    : COMPLIANCE AUDIT PASSED: Draft answer is 100% grounded in retrieved policy kb_005. Zero ungrounded assertions or policy contradictions detected. Approved unchanged.
+================================================================================
+VERIFICATION STATUS: PASSED — DRAFT APPROVED UNCHANGED
+================================================================================

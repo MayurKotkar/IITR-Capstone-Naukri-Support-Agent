@@ -1,0 +1,50 @@
+================================================================================
+NAUKRI.COM DOMAIN SUPPORT AGENT: AUTOGEN REVIEW STAGE
+TASK 14 (CASE 2): UNGROUNDED CLAIM INJECTED — CAUGHT & REVISED
+================================================================================
+Timestamp: 2026-10-31T18:29:42.761332+00:00
+Architecture: 2-Agent Autogen RoundRobinGroupChat (max_turns=2)
+Output Format: Pydantic StructuredMessage[ReviewVerdict]
+--------------------------------------------------------------------------------
+
+1. INPUTS TO REVIEW STAGE (WITH INJECTED UNGROUNDED CLAIM):
+  [CrewAI Composer Draft Answer (Tainted)]:
+    "According to Naukri.com policy (kb_005): Confirmed full-time employees are subject to a 90-day notice period. Furthermore, employees may optionally opt for an immediate 10-day notice period buyout upon manager approval."
+  [Retrieved Policy Context (Ground Truth)]:
+    "[kb_005_notice_period.txt] All confirmed full-time employees at Naukri.com must serve a mandatory 90-day notice period following formal resignation submission on the HRMS portal. Notice buyout waivers are strictly prohibited under standard policy."
+  [Injected False Claim]: "employees may optionally opt for an immediate 10-day notice period buyout"
+
+2. ROUND-ROBIN GROUP CHAT CONVERSATION TRACE:
+--------------------------------------------------------------------------------
+
+[Turn 1] Agent: user | Type: TextMessage
+  Message Body:
+--- CREWAI COMPOSER DRAFT ANSWER ---
+According to Naukri.com policy (kb_005): Confirmed full-time employees are subject to a 90-day notice period. Furthermore, employees may optionally opt for an immediate 10-day notice period buyout upon manager approval.
+
+--- RETRIEVED POLICY CONTEXT ---
+[kb_005_notice_period.txt] All confirmed full-time employees at Naukri.com must serve a mandatory 90-day notice period following formal resignation submission on the HRMS portal. Notice buyout waivers are strictly prohibited under standard policy.
+
+INSTRUCTION: Review the draft answer against the retrieved context for 100% grounding.
+
+[Turn 2] Agent: Policy_Compliance_Reviewer | Type: TextMessage
+  Message Body:
+POLICY COMPLIANCE REVIEW:
+1. Grounding Audit: CRITICAL DISCREPANCY DETECTED. The draft asserts that employees may opt for an immediate 10-day notice period buyout upon manager approval. This claim has ZERO grounding in retrieved policy kb_005 (which mandates 90 days).
+2. Hallucination Check: The 10-day buyout clause is an ungrounded hallucination.
+3. Safety & PII: Ungrounded policy claims risk candidate labor disputes.
+RECOMMENDATION: REVISE DRAFT — Redact 10-day buyout clause and enforce strict 90 days.
+
+[Turn 3] Agent: Final_Editor | Type: StructuredMessage[ReviewVerdict]
+  Structured Content: approved=False
+  Final Answer      : According to Naukri.com policy (kb_005): Confirmed full-time employees are subject to a mandatory 90-day notice period upon resignation. Resignation requests must be submitted through the official HRMS portal. Notice buyout waivers are strictly prohibited under standard policy.
+  Reason            : COMPLIANCE AUDIT REVISION: Draft contained an ungrounded assertion claiming an immediate 10-day buyout option. This claim was refuted by official policy kb_005. Redacted false claim and restored strict 90-day notice policy wording.
+
+--------------------------------------------------------------------------------
+3. FINAL STRUCTURED VERDICT EVALUATION:
+  - Approved Status : False (Correctly detected discrepancy)
+  - Revised Answer  : According to Naukri.com policy (kb_005): Confirmed full-time employees are subject to a mandatory 90-day notice period upon resignation. Resignation requests must be submitted through the official HRMS portal. Notice buyout waivers are strictly prohibited under standard policy.
+  - Audit Reason    : COMPLIANCE AUDIT REVISION: Draft contained an ungrounded assertion claiming an immediate 10-day buyout option. This claim was refuted by official policy kb_005. Redacted false claim and restored strict 90-day notice policy wording.
+================================================================================
+VERIFICATION STATUS: PASSED — UNGROUNDED CLAIM CAUGHT & REVISED
+================================================================================

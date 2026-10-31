@@ -1,0 +1,52 @@
+================================================================================
+NAUKRI.COM DOMAIN SUPPORT AGENT: AI GOVERNANCE VERIFICATION
+TASK 15 (PART A): APPLICATION LAYER — PRINCIPLE OF LEAST AUTONOMY
+================================================================================
+Timestamp: 2026-10-31T18:29:42.727352+00:00
+Governance Model: Four-Layer AI Governance (Application, Runtime, Model, Infrastructure)
+--------------------------------------------------------------------------------
+
+1. AGENT TOOL PRIVILEGE AUDIT (LEAST AUTONOMY VERIFICATION):
+--------------------------------------------------------------------------------
+  [Agent 1: Lookup Agent (Application Records Specialist)]
+    - Assigned Tools: ['check_job_application_status']
+    - Authorization : check_job_application_status -> PERMITTED (Sole Authorized Agent)
+  [Agent 2: Retrieval Agent (HR Policy Retrieval Specialist)]
+    - Assigned Tools: ['rag_lookup']
+    - Authorization : check_job_application_status -> PROHIBITED (Not Wired)
+  [Agent 3: Response Composer (Senior HR Support Composer)]
+    - Assigned Tools: []
+    - Authorization : check_job_application_status -> PROHIBITED (Zero Tools / Pure Synthesis)
+
+2. RUNTIME ACCESS-CONTROL REJECTION DEMONSTRATION:
+--------------------------------------------------------------------------------
+  [Scenario A: Authorized Invocation by Lookup Agent]
+    - Action : Lookup Agent calls check_job_application_status('APP-001')
+    - Result : SUCCESS (Status returned: 'Applied')
+
+  [Scenario B: Unauthorized Invocation Attempt by Retrieval Agent]
+    - Action   : Retrieval Agent attempts check_job_application_status('APP-001')
+    - Intercept: UnauthorizedToolAccessException RAISED
+    - Blocked  : True
+    - Reason   : SECURITY POLICY VIOLATION: Agent 'HR Policy Retrieval Specialist' attempted to call restricted tool 'check_job_application_status'. Under the Principle of Least Autonomy (PoLA), 'check_job_application_status' is strictly restricted to authorized agents: ['Application Records Specialist'].
+
+  [Scenario C: Unauthorized Invocation Attempt by Composer Agent]
+    - Action   : Composer Agent attempts check_job_application_status('APP-001')
+    - Intercept: UnauthorizedToolAccessException RAISED
+    - Blocked  : True
+    - Reason   : SECURITY POLICY VIOLATION: Agent 'Senior HR Support Composer' attempted to call restricted tool 'check_job_application_status'. Under the Principle of Least Autonomy (PoLA), 'check_job_application_status' is strictly restricted to authorized agents: ['Application Records Specialist'].
+
+3. FORMAL ONE-PARAGRAPH JUSTIFICATION FOR LEAST AUTONOMY:
+--------------------------------------------------------------------------------
+JUSTIFICATION FOR LEAST AUTONOMY: In enterprise HR and recruitment systems, applicant database records contain highly sensitive candidate Personally Identifiable Information (candidate names, phone numbers, application histories) and confidential financial data (candidate current and expected salaries up to 3,500,000 INR). Under the Principle of Least Autonomy (PoLA), agents must only possess the minimal privileges strictly required to complete their designated task. Restricting database access exclusively to the Lookup Agent isolates sensitive state mutation and data lookup risks, preventing the Retrieval Agent (which executes unconstrained semantic text matching) and the Composer Agent (which synthesizes public-facing prose) from querying applicant databases, leaking unauthorized candidate records, or being tricked via prompt injection into dumping candidate salary tables.
+
+4. SYSTEM RISK LEVEL CLASSIFICATION & JUSTIFICATION:
+--------------------------------------------------------------------------------
+  CLASSIFIED RISK TIER: HIGH RISK
+  (Comparative Schema: Low=Summarization; Medium=Code/Ticket Gen; High=Hiring/Financial/Medical)
+
+RISK CLASSIFICATION JUSTIFICATION: The Naukri.com Domain Support Agent is categorized as HIGH RISK under enterprise AI governance frameworks and EU AI Act Annex III criteria. Although the system provides conversational support, its core domain directly encompasses automated employment and recruitment workflows: processing job application statuses, assessing candidate priority escalation scores, handling confidential compensation data (expected salaries up to 3,500,000 INR), and routing recruitment escalation workflows to human HR managers. Automated decisions, hallucinations, or unauthorized data disclosures in this operational domain directly impact employment opportunities, candidate career progression, and referral financial compensations, while exposing sensitive candidate Personally Identifiable Information (PII). Consequently, the system warrants rigorous High-Risk governance controls, including pre-disk PII masking, strict least-autonomy tool sandboxing, deterministic grounded generation fallbacks, token budget caps, and a dual-agent Autogen compliance review stage.
+
+================================================================================
+VERIFICATION STATUS: PASSED — LEAST AUTONOMY STRICTLY ENFORCED
+================================================================================
