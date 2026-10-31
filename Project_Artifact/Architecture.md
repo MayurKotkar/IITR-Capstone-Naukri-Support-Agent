@@ -165,7 +165,7 @@ flowchart TD
 ## 4. Repository Structure
 
 ```
-IITR-Module5/                              # Master Workspace & Submission Root
+IITR-Capstone-Naukri-Support-Agent/        # Master Repository & Submission Root
 ├── README.md                              # Master capstone documentation & reproduction guide
 ├── requirements.txt                       # Project dependencies
 ├── config.py                              # Central configuration & runtime parameters
