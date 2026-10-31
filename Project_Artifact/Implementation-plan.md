@@ -294,7 +294,7 @@ Create `config.py` to centralize all tunable thresholds, file paths, and seed va
 
 - **Actions:**
 
-  1. Implement cosine similarity calculation from ChromaDB distance metrics ($similarity = 1.0 - \text{cosine\_distance}$).
+  1. Implement cosine similarity calculation from ChromaDB distance metrics ($similarity = 1.0 - \text{cosine-distance}$).
 
   2. Define calibration dataset:
 
@@ -314,7 +314,7 @@ Create `config.py` to centralize all tunable thresholds, file paths, and seed va
 
   3. Measure Top-1 cosine similarities for both clusters.
 
-  4. Compute midpoint threshold $\theta = \frac{\min(\text{in\_scope}) + \max(\text{out\_scope})}{2}$.
+  4. Compute midpoint threshold $\theta = \frac{\min(\text{in-scope}) + \max(\text{out-of-scope})}{2}$.
 
   5. Save calibrated values into `config.py` and document them in `README.md`.
 
@@ -374,9 +374,9 @@ Create `config.py` to centralize all tunable thresholds, file paths, and seed va
 
   1. Define escalation scoring function:
 
-     $$\text{recency\_score} = 1.0 - \left(\frac{\text{days\_since\_created}}{30.0}\right)$$
+     $$\text{recency-score} = 1.0 - \left(\frac{\text{days-since-created}}{30.0}\right)$$
 
-     $$\text{escalation\_score} = 0.6 \times \text{int}(\text{flagged\_priority\_review}) + 0.4 \times \text{recency\_score}$$
+     $$\text{escalation-score} = 0.6 \times \text{int}(\text{flagged-priority-review}) + 0.4 \times \text{recency-score}$$
 
   2. Determine escalation threshold based on dataset distribution:
 

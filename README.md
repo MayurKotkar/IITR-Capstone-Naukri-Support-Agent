@@ -225,7 +225,8 @@ Under `MOCK_LLM` mode, retrieval cosine similarity is the grounding signal. Tuto
 - **Out-of-Scope Observed Cluster:** `[0.1159, 0.2525]`
 - **Separation Gap ($\Delta$):** `0.5145 - 0.2525 = 0.2620` (clean, non-overlapping margin)
 - **Calibrated Midpoint Formula:**
-  $$\theta = \text{round}\left(\frac{\min(\text{in\_scope}) + \max(\text{out\_scope})}{2}, 2\right) = \text{round}\left(\frac{0.5145 + 0.2525}{2}, 2\right) = \mathbf{0.38}$$
+
+$$\theta = \text{round}\left(\frac{\min(\text{in-scope}) + \max(\text{out-of-scope})}{2}, 2\right) = \text{round}\left(\frac{0.5145 + 0.2525}{2}, 2\right) = \mathbf{0.38}$$
 
 ### Threshold Justification
 - **Chosen Threshold:** `RAG_SIMILARITY_THRESHOLD = 0.38`
@@ -286,7 +287,7 @@ The score combines two simple factors:
 
 $$\text{Escalation Score} = (0.60 \times \text{Priority Flag}) + (0.40 \times \text{Recency})$$
 
-Where $\text{Recency} = 1.0 - (\text{days\_since\_created} / 30.0)$.
+Where $\text{Recency} = 1.0 - (\text{days-since-created} / 30.0)$.
 
 ### Why Weights are 0.60 and 0.40
 - **HR Priority comes first (60%):** An application should only be treated as an urgent priority if HR actually flagged it. An ordinary application should not escalate simply because it was submitted today.
